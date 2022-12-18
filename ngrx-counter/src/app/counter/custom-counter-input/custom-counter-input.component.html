@@ -2,8 +2,8 @@
     <div class="my-3">
         {{ channelName$ | async}}
     </div>
-    <div class="d-flex justify-content-center">
-        <input type="text" placeholder="enter value" [(ngModel)]="value" class="mx-3 form-control w-auto"/>
+    <div class="d-flex justify-content-start">
+        <input type="text" placeholder="enter value" [(ngModel)]="value" class="me-3 form-control w-auto"/>
         <button class="btn btn-primary" (click)="onAdd()">Add to counter</button>
     </div>
 

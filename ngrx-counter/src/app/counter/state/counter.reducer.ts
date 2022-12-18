@@ -3,7 +3,8 @@ import { createReducer, on } from '@ngrx/store';
 import { customIncrement, decrement, increment, reset, changeChannelName } from "./counter.actions";
 
 
-const _counterReducer = createReducer(initialState, 
+const _counterReducer = createReducer(
+    initialState, 
     on(increment, (state) => {
         return {
             ...state,
