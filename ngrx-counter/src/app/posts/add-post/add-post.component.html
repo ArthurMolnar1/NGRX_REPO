@@ -8,8 +8,6 @@
                 <input type="text" class="form-control" formControlName="title"/>
                 <div *ngIf="postForm.get('title')?.touched && !postForm.get('title')?.valid" class="alert alert-danger">Title is required</div>
                 <div *ngIf="postForm.get('title')?.hasError('minlength')" class="alert alert-danger">Title should be minimum 6 characters</div> 
-                
-                
             </div>
 
             <div class="mb-3">
