@@ -9,7 +9,7 @@ import { deletePost } from '../state/posts.actions';
 @Component({
   selector: 'app-posts-list',
   templateUrl: './posts-list.component.html',
-  styleUrls: ['./posts-list.component.css']
+  styleUrls: ['./posts-list.component.css'],
 })
 export class PostsListComponent implements OnInit {
   posts$!: Observable<Post[]>;
@@ -20,11 +20,9 @@ export class PostsListComponent implements OnInit {
   }
 
   onDeletePost(id: any): void {
-    if (confirm("Are you sure you want to delete?")) {
-      console.log('delete the post')
-      this.store.dispatch(deletePost({ id }))
+    if (confirm('Are you sure you want to delete?')) {
+      console.log('delete the post');
+      this.store.dispatch(deletePost({ id }));
     }
-    
   }
-  
 }

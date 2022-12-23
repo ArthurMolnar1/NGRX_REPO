@@ -8,7 +8,7 @@ import { AppState } from 'src/app/store/app.state';
 @Component({
   selector: 'app-custom-counter-input',
   templateUrl: './custom-counter-input.component.html',
-  styleUrls: ['./custom-counter-input.component.css']
+  styleUrls: ['./custom-counter-input.component.css'],
 })
 export class CustomCounterInputComponent implements OnInit {
   value!: number;
@@ -21,10 +21,10 @@ export class CustomCounterInputComponent implements OnInit {
   }
 
   onAdd() {
-    this.store.dispatch(customIncrement({count: +this.value}));
+    this.store.dispatch(customIncrement({ count: +this.value }));
   }
 
   onChangeChannelName() {
-    this.store.dispatch(changeChannelName())
+    this.store.dispatch(changeChannelName());
   }
 }

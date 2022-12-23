@@ -11,7 +11,7 @@ import { updatePost } from '../state/posts.actions';
 @Component({
   selector: 'app-edit-post',
   templateUrl: './edit-post.component.html',
-  styleUrls: ['./edit-post.component.css']
+  styleUrls: ['./edit-post.component.css'],
 })
 export class EditPostComponent implements OnInit, OnDestroy {
   post!: Post;
@@ -19,7 +19,7 @@ export class EditPostComponent implements OnInit, OnDestroy {
   postSubscription!: Subscription;
 
   constructor(
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute,
     private store: Store<AppState>,
     private router: Router
   ) {}
@@ -36,9 +36,15 @@ export class EditPostComponent implements OnInit, OnDestroy {
 
   createForm() {
     this.postForm = new FormGroup({
-      title: new FormControl(this.post.title, [Validators.required, Validators.minLength(6)]),
-      description: new FormControl(this.post.description, [Validators.required, Validators.minLength(10)])
-    })
+      title: new FormControl(this.post.title, [
+        Validators.required,
+        Validators.minLength(6),
+      ]),
+      description: new FormControl(this.post.description, [
+        Validators.required,
+        Validators.minLength(10),
+      ]),
+    });
   }
 
   onSubmit() {
@@ -52,13 +58,12 @@ export class EditPostComponent implements OnInit, OnDestroy {
     const post: Post = {
       id: this.post.id,
       title,
-      description
-    }
-    
+      description,
+    };
+
     // dispatch the action
     this.store.dispatch(updatePost({ post }));
-    this.router.navigate(['posts'])
-
+    this.router.navigate(['posts']);
   }
 
   ngOnDestroy() {
