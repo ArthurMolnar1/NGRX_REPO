@@ -36,11 +36,11 @@ export class EditPostComponent implements OnInit, OnDestroy {
 
   createForm() {
     this.postForm = new FormGroup({
-      title: new FormControl(this.post.title, [
+      title: new FormControl(this.post?.title, [
         Validators.required,
         Validators.minLength(6),
       ]),
-      description: new FormControl(this.post.description, [
+      description: new FormControl(this.post?.description, [
         Validators.required,
         Validators.minLength(10),
       ]),
