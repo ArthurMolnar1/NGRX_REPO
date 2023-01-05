@@ -6,4 +6,4 @@ export const getRouterState = createFeatureSelector<RouterReducerState<RouterSta
 
 export const getCurrentRoute = createSelector(getRouterState, (router) => {
     return router.state;
-  });
+});
