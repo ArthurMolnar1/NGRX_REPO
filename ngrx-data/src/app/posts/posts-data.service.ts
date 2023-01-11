@@ -44,4 +44,12 @@ export class PostsDataService extends DefaultDataService<Post> {
       { ...post.changes }
     );
   }
+
+  delete(id: any): Observable<string> {
+    return this.http.delete<Post>(
+      `https://vue-completecourse.firebaseio.com/posts/${id}.json`,
+    ).pipe(map(data => {
+      return id;
+    }));
+  }
 }
