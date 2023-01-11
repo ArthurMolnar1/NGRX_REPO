@@ -1,5 +1,4 @@
-import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Post } from './../models/post.model';
 import { Injectable } from '@angular/core';
 import { DefaultDataService, HttpUrlGenerator } from '@ngrx/data';
@@ -23,5 +22,14 @@ export class PostsDataService extends DefaultDataService<Post> {
           return posts;
         })
       );
+  }
+
+  add(post: Post): Observable<Post> {
+    return this.http
+      .post<{ name: string }>(`https://vue-completecourse.firebaseio.com/posts.json`, 
+      post
+      ).pipe(map((data) => {
+        return { ...post, id: data.name };
+      }))
   }
 }
