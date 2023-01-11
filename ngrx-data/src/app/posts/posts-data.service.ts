@@ -3,6 +3,7 @@ import { Post } from './../models/post.model';
 import { Injectable } from '@angular/core';
 import { DefaultDataService, HttpUrlGenerator } from '@ngrx/data';
 import { HttpClient } from '@angular/common/http';
+import { Update } from '@ngrx/entity';
 
 @Injectable()
 export class PostsDataService extends DefaultDataService<Post> {
@@ -26,10 +27,21 @@ export class PostsDataService extends DefaultDataService<Post> {
 
   add(post: Post): Observable<Post> {
     return this.http
-      .post<{ name: string }>(`https://vue-completecourse.firebaseio.com/posts.json`, 
-      post
-      ).pipe(map((data) => {
-        return { ...post, id: data.name };
-      }))
+      .post<{ name: string }>(
+        `https://vue-completecourse.firebaseio.com/posts.json`,
+        post
+      )
+      .pipe(
+        map((data) => {
+          return { ...post, id: data.name };
+        })
+      );
+  }
+
+  update(post: Update<Post>): Observable<Post> {
+    return this.http.put<Post>(
+      `https://vue-completecourse.firebaseio.com/posts/${post.id}.json`,
+      { ...post.changes }
+    );
   }
 }
